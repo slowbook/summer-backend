@@ -5,9 +5,14 @@ const prisma = new Prisma.PrismaClient() ;
 const bcrypt = require("bcryptjs") ;
 const cors = require("cors") ;
 
-app.use(cors({
-    origin : "https://summer-frontend.vercel.app"
-})) ;
+// allow only from origin https://summer-frontend.vercel.app/
+
+const corsOptions = {
+    origin: "https://summer-frontend.vercel.app",
+    optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions)) ;
 
 app.use(express.json()) ;
 
